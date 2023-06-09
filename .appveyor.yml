@@ -23,5 +23,5 @@ build_script:
       mkdir build
       cd build
       mklink "llvm-config.cmake" "LLVMConfigExtensions.cmake"
-      cmake -G "Visual Studio 17 2022" -A x64 .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\lib\cmake\llvm"
+      cmake -G "Visual Studio 17 2022" -A x64 .. -DLLVM_INSTALL_DIR="C:\\Program Files\\LLVM"
       cmake --build . --config Release
