@@ -31,6 +31,6 @@ jobs:
             cd build-with-prebuilt
             mkdir build
             cd build
-            cmake -G "Visual Studio 19 2022" -A X64
+            cmake -G "Visual Studio 17 2022" -A X64
             cmake .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\bin"
             cmake --build . --config Release
