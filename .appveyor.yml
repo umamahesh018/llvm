@@ -19,6 +19,7 @@ build_script:
       cd build-with-prebuilt
       mkdir build
       cd build
+      $env:LLVM_DIR = "C:\Program Files\LLVM\lib\cmake\llvm"
       $env:CMAKE_PREFIX_PATH = "C:\Program Files\LLVM"
       cmake -G "Visual Studio 17 2022" -A x64 .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\bin"
       cmake --build . --config Release
