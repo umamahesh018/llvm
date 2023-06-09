@@ -3,7 +3,7 @@ version: 1.0.{build}
 environment:
   matrix:
     - LLVM_DIR: "C:\\Program Files\\LLVM\\lib\\cmake\\llvm"
-    - CONFIGURATION: Release
+   
 
 branches:
   only:
@@ -13,7 +13,7 @@ image: Visual Studio 2022
 
 build_script:
   - ps: |
-      dir "C:\Program Files\LLVM"
+      dir "C:\Program Files\LLVM\lib"
       dir "C:\Program Files\LLVM\bin"
       # Build script commands
       mkdir hello-clangtool.git
