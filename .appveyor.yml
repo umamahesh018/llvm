@@ -4,7 +4,7 @@ image: Visual Studio 2019
 
 environment:
   matrix:
-    - LLVM_VERSION: "12"
+    - LLVM_VERSION: "16"
 
 install:
   - cmake --version
