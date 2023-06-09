@@ -13,7 +13,7 @@ image: Visual Studio 2022
 
 build_script:
   - ps: |
-      dir "C:\Program Files\LLVM\lib"
+      dir "C:\Program Files\LLVM\lib\cmake"
       dir "C:\Program Files\LLVM\bin"
       # Build script commands
       mkdir hello-clangtool.git
