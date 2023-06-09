@@ -13,6 +13,8 @@ image: Visual Studio 2022
 build_script:
   - ps: |
       # Build script commands
+      Get-ChildItem -Path C:\ -Filter "LLVMConfig.cmake" -Recurse -ErrorAction SilentlyContinue
+      Get-ChildItem -Path C:\ -Filter "llvm-config.cmake" -Recurse -ErrorAction SilentlyContinue
       mkdir hello-clangtool.git
       cd hello-clangtool.git
       git clone https://github.com./dougpuob/hello-clangtool.git .
