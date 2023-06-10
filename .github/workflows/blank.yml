@@ -25,15 +25,15 @@ jobs:
       # See https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html?highlight=cmake_build_type
       # cmake .. -DLLVM_INSTALL_DIR="C:\petzone\llvm\llvm-prebuilt\llvmorg-11.1.0-msbuild-vs2019-x64-rel"
       run: |
-            
+            dir "C:\Program Files\LLVM"
             dir "C:\Program Files\LLVM\lib\cmake\llvm"
             dir "C:\Program Files\LLVM\bin"
-            mkdir hello-clangtool.git
-            cd hello-clangtool.git
-            git clone https://github.com./dougpuob/hello-clangtool.git  .
-            cd build-with-prebuilt
-            mkdir build
-            cd build
-            cmake -G "Visual Studio 17 2022" -A X64
-            cmake .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\bin"
-            cmake --build . --config Release
+        #    mkdir hello-clangtool.git
+        #   cd hello-clangtool.git
+        #    git clone https://github.com./dougpuob/hello-clangtool.git  .
+        #    cd build-with-prebuilt
+        #    mkdir build
+        #    cd build
+        #    cmake -G "Visual Studio 17 2022" -A X64
+        #    cmake .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\bin"
+        #    cmake --build . --config Release
