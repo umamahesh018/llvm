@@ -12,12 +12,7 @@ image: Visual Studio 2022
 
 build_script:
   - ps: |
-          mkdir llvm-project.git-11.1.0
-          cd llvm-project.git-11.1.0
-          git clone https://github.com/llvm/llvm-project.git .
-          git checkout llvmorg-11.1.0
-          mkdir build
-          cd build
+         DIR
       # Build script commands
       # llvm-config --version
       # Get-ChildItem -Path C:\ -Filter "LLVMConfig.cmake" -Recurse -ErrorAction SilentlyContinue
