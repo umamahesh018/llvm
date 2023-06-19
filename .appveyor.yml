@@ -12,17 +12,22 @@ image: Visual Studio 2022
 
 build_script:
   - ps: |
+        dir C:\Program Files\LLVM\lib\cmake\llvm
+        Dir C:\Program Files\LLVM\lib
+        Dir C:\Program Files\LLVM
+        Dir C:\Program Files\LLVM\bin
+      
       # Build script commands
-      llvm-config --version
-      Get-ChildItem -Path C:\ -Filter "LLVMConfig.cmake" -Recurse -ErrorAction SilentlyContinue
-      Get-ChildItem -Path C:\ -Filter "llvm-config.cmake" -Recurse -ErrorAction SilentlyContinue
-      mkdir hello-clangtool.git
-      cd hello-clangtool.git
-      git clone https://github.com./dougpuob/hello-clangtool.git .
-      cd build-with-prebuilt
-      mkdir build
-      cd build
-      $env:LLVM_DIR = "C:\Program Files\LLVM\lib\cmake\llvm"
-      $env:CMAKE_PREFIX_PATH = "C:\Program Files\LLVM"
-      cmake -G "Visual Studio 17 2022" -A x64 .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\lib\cmake\llvm"
-      cmake --build . --config Release
+      # llvm-config --version
+      # Get-ChildItem -Path C:\ -Filter "LLVMConfig.cmake" -Recurse -ErrorAction SilentlyContinue
+      #Get-ChildItem -Path C:\ -Filter "llvm-config.cmake" -Recurse -ErrorAction SilentlyContinue
+      # mkdir hello-clangtool.git
+      # cd hello-clangtool.git
+      # git clone https://github.com./dougpuob/hello-clangtool.git .
+      # cd build-with-prebuilt
+      # mkdir build
+      # cd build
+      # $env:LLVM_DIR = "C:\Program Files\LLVM\lib\cmake\llvm"
+      # $env:CMAKE_PREFIX_PATH = "C:\Program Files\LLVM"
+      # cmake -G "Visual Studio 17 2022" -A x64 .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\lib\cmake\llvm"
+      # cmake --build . --config Release
