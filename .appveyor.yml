@@ -12,10 +12,10 @@ image: Visual Studio 2022
 
 build_script:
   - ps: |
-        dir C:\Program Files\LLVM\lib\cmake\llvm
-        Dir C:\Program Files\LLVM\lib
-        Dir C:\Program Files\LLVM
-        Dir C:\Program Files\LLVM\bin
+        dir "C:\Program Files\LLVM\lib\cmake\llvm"
+        Dir "C:\Program Files\LLVM\lib"
+        Dir "C:\Program Files\LLVM"
+        Dir "C:\Program Files\LLVM\bin"
       
       # Build script commands
       # llvm-config --version
