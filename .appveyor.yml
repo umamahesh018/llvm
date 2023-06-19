@@ -15,7 +15,7 @@ build_script:
          DIR "C:\"
          DIR "C:\Program files"
          DIR "C:\projects"
-         cd C:\Program files
+         cd "C:\Program files"
          mkdir llvm-project.git-11.1.0
          cd llvm-project.git-11.1.0
          git clone https://github.com/llvm/llvm-project.git .
