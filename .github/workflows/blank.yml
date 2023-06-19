@@ -22,13 +22,4 @@ jobs:
 
     - name: test
       run: |
-            mkdir hello-clangtool.git
-            cd hello-clangtool.git
-            git clone https://github.com./dougpuob/hello-clangtool.git .
-            cd build-with-prebuilt
-            mkdir build
-            cd build
-            $env:LLVM_DIR = "C:\Program Files\LLVM\lib\cmake\llvm"
-            $env:CMAKE_PREFIX_PATH = "C:\Program Files\LLVM"
-            cmake -G "Visual Studio 17 2022" -A x64 .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM" -DLLVM_CONFIG_FILE="LLVMConfigExtensions.cmake"
-            cmake --build . --config Release
+             DIR "C:\petzone"
