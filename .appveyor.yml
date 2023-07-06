@@ -1,40 +1,37 @@
-version: 1.0.{build}
-
 environment:
   matrix:
-    - CONFIGURATION: Release
+    - PLATFORM: x64
+      GENERATOR: "Visual Studio 16 2019"
+      BUILD_TYPE: Release
 
-branches:
-  only:
-    - main
+cache:
+  - C:\petzone\llvm\llvm-prebuilt\llvmorg-11.1.0-msbuild-vs2019-x64-rel
+  - llvm-project.git-11.1.0\build
 
-image: Visual Studio 2022
+before_build:
+  - ps: |
+      git clone https://github.com/llvm/llvm-project.git llvm-project.git-11.1.0
+      cd llvm-project.git-11.1.0
+      git checkout llvmorg-11.1.0
 
 build_script:
   - ps: |
-         DIR "C:\"
-         DIR "C:\Program files"
-         DIR "C:\projects"
-         cd "C:\Program files"
-         DIR
-         
-        # mkdir llvm-project.git-11.1.0
-        # cd llvm-project.git-11.1.0
-        # git clone https://github.com/llvm/llvm-project.git .
-        # git checkout llvmorg-11.1.0
-        # mkdir build
-        # cd build 
-      # Build script commands
-      # llvm-config --version
-      # Get-ChildItem -Path C:\ -Filter "LLVMConfig.cmake" -Recurse -ErrorAction SilentlyContinue
-      # Get-ChildItem -Path C:\ -Filter "llvm-config.cmake" -Recurse -ErrorAction SilentlyContinue
-      # mkdir hello-clangtool.git
-      # cd hello-clangtool.git
-      # git clone https://github.com./dougpuob/hello-clangtool.git .
-      # cd build-with-prebuilt
-      # mkdir build
-      # cd build
-      # $env:LLVM_DIR = "C:\Program Files\LLVM\lib\cmake\llvm"
-      # $env:CMAKE_PREFIX_PATH = "C:\Program Files\LLVM"
-      # cmake -G "Visual Studio 17 2022" -A x64 .. -DLLVM_INSTALL_DIR="C:\Program Files\LLVM\lib\cmake\llvm"
-      # cmake --build . --config Release
+      mkdir llvm-project.git-11.1.0\build
+      cd llvm-project.git-11.1.0\build
+      cmake -G "%GENERATOR%" -A %PLATFORM% ^
+        -DLLVM_ENABLE_ABI_BREAKING_CHECKS=0 ^
+        -DLLVM_USE_LINKER=lld ^
+        -DLLVM_TARGETS_TO_BUILD="X86" ^
+        -DLLVM_ENABLE_PROJECTS="clang;llvm" ^
+        -DCMAKE_BUILD_TYPE=%BUILD_TYPE% ^
+        -DCMAKE_INSTALL_PREFIX="C:\petzone\llvm\llvm-prebuilt\llvmorg-11.1.0-msbuild-vs2019-x64-rel" ^
+        ..\llvm
+      cmake --build . --config %BUILD_TYPE%
+      cmake -P cmake_install.cmake
+
+after_build:
+  - ps: |
+      git clone https://github.com/dougpuob/hello-clangtool.git hello-clangtool.git
+      cd hello-clangtool.git\build-with-prebuilt\build
+      cmake .. -DLLVM_INSTALL_DIR="C:\petzone\llvm\llvm-prebuilt\llvmorg-11.1.0-msbuild-vs2019-x64-rel"
+      cmake --build . --config %BUILD_TYPE%
