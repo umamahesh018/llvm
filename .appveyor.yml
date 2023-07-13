@@ -17,7 +17,7 @@ before_build:
 build_script:
   - ps: |
       mkdir llvm-project.git-11.1.0\build
-      cd llvm-project.git-11.1.0\build
+      cd llvm-project.git-11.1.0\build 
       cmake -G "%GENERATOR%" -A %PLATFORM% ^
         -DLLVM_ENABLE_ABI_BREAKING_CHECKS=0 ^
         -DLLVM_USE_LINKER=lld ^
