@@ -11,17 +11,20 @@ branches:
 image: Visual Studio 2022
 
 cache:
-  paths:
     - llvm-project.git-11.1.0
     - C:\petzone\llvm\llvm-prebuilt\llvmorg-11.1.0-msbuild-vs2019-x64-rel
 
 build_script:
   - ps: |
       # Build script commands
-  
+      if (Test-Path llvm-project.git-11.1.0) {
+        Write-Host "Using cached llvm-project repository."
+      }
+      else {
+        Write-Host "Cloning llvm-project repository."
+        git clone https://github.com/llvm/llvm-project.git llvm-project.git-11.1.0
+      }
 
-        
-      git clone https://github.com/llvm/llvm-project.git llvm-project.git-11.1.0
       cd llvm-project.git-11.1.0
       git checkout llvmorg-11.1.0
 
