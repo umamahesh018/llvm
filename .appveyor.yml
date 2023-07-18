@@ -18,14 +18,10 @@ cache:
 build_script:
   - ps: |
       # Build script commands
-      if (Test-Path llvm-project.git-11.1.0) {
-        Write-Host "Using cached llvm-project repository."
-      }
-      else {
-        Write-Host "Cloning llvm-project repository."
-        git clone https://github.com/llvm/llvm-project.git llvm-project.git-11.1.0
-      }
+  
 
+        
+      git clone https://github.com/llvm/llvm-project.git llvm-project.git-11.1.0
       cd llvm-project.git-11.1.0
       git checkout llvmorg-11.1.0
 
